@@ -59,6 +59,7 @@ conda activate crl
 ```bash
 pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
 pip install vllm==0.8.5.post1
+cd verl
 pip install -e .
 pip install vertexai
 pip install sentence_transformers
@@ -67,7 +68,7 @@ pip install flash-attn==2.7.4.post1 --no-build-isolation
 
 ### Data Generation
 
-Our datasets are available at [Composition-RL HF](https://huggingface.co/collections/xx18/composition-rl) and you can download therein.
+Our datasets are available at [Composition-RL HF](https://huggingface.co/collections/xx18/composition-rl), and you can download them therein.
 If you want to generate your own dataset, please follow these steps:
 
 First, deploy vllm instances across nodes:
@@ -81,9 +82,9 @@ bash deploy_vllm_cluster.sh # wait 2-3 mins for serving llms
 bash generate_config.sh # It will generate a generated_vllm_config.yaml file
 ```
 
-These steps will deploy vllm instances across your nodes, the genrated configuration file `deployment/generated_vllm_config.yaml` contains `resp_urls`, `resp_server_names`, and `resp_api_keys`.
+These steps will deploy vllm instances across your nodes. The generated configuration file `deployment/generated_vllm_config.yaml` contains `resp_urls`, `resp_server_names`, and `resp_api_keys`.
 
-Copy these configurations to `/apdcephfs_zwfy3/share_302867165/xxucaxu/codes/BGRPO/NCSP/paper/repo/testtest/NCSP/project/NCSP/config/v4_4step/stable_with_code_math4500_demo.yaml` and adpat the `dataset_path` to your own datasets.
+Copy these configurations to `/apdcephfs_zwfy3/share_302867165/xxucaxu/codes/BGRPO/NCSP/paper/repo/testtest/NCSP/project/NCSP/config/v4_4step/stable_with_code_math4500_demo.yaml` and adapt the `dataset_path` to your own datasets.
 
 Then, run the following commands:
 ```bash
@@ -111,14 +112,14 @@ bash ./scripts/ray_start.sh # start ray, use pssh to run on multiple nodes if ne
 bash scripts/eval/start_generate.sh
 ```
 
-The resulted metrics and evaluation outputs will be saved under the folder `your_model_path/eval_results`
+The resulting metrics and evaluation outputs will be saved under the folder `your_model_path/eval_results`.
 
 
 
 
 ## 🤗 Datasets and Models
 
-we are open-sourcing our complete codes, and training details for the research community. All our resulted checkpoints can be found in [TFPI Collection](https://huggingface.co/collections/xx18/tfpi).
+We are open-sourcing our complete code and training details for the research community. All our checkpoints can be found in [Composition-RL Collection](https://huggingface.co/collections/xx18/composition-rl).
 
 | Name | Link | Remarks | 
 | - | - | - |
