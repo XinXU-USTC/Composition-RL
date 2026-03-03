@@ -1,0 +1,591 @@
+
+common:
+  debug: 0 # 
+  # ============ 1.input output ============
+  dataset_path: data/MATH_full_permutations_200*199.jsonl
+  output_folder: project/NCSP/result/v4_4step/math4500/
+
+
+0:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess1_1_modify_p1.py   
+  resp_filter_func: project/NCSP/custom_functions/v4_4step/filter_modify_p1.py 
+
+  # ============ 3. api ============
+  
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+
+
+
+
+1:  
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess1_2_check_var1_extract.py
+  resp_filter_func: src/custom_functions/resp_filter_boxed.py
+
+  # ============ 3. api ============
+ 
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+
+
+
+
+2:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess1_3_check_var1_with_python.py
+  resp_filter_func: src/custom_functions/filter_and_execute_python.py 
+
+  # ============ 3. api ============
+
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+    stop: "```output"
+
+
+
+3:  
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess2_1_modify_p2.py   
+  resp_filter_func: project/NCSP/custom_functions/v4_4step/filter_modify_p2.py 
+
+  # ============ 3. api ============
+ 
+  resp_urls:
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+
+
+
+
+4:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess2_2_check_var2_extract.py
+  resp_filter_func: project/NCSP/custom_functions/v4_4step/filter_check_var2_extract.py 
+
+  # ============ 3. api ============
+
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+    stop: "```output"
+
+
+
+5:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess2_3_check_var2_with_python.py
+  resp_filter_func: src/custom_functions/filter_and_execute_python.py 
+
+  # ============ 3. api ============
+
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+    stop: "```output"
+
+
+
+6:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess3_1_diff_p1p2_with_python.py
+  resp_filter_func: src/custom_functions/filter_and_execute_python.py 
+
+  # ============ 3. api ============
+
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+    stop: "```output"
+
+
+
+7:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess3_2_diff_s1s2_with_python.py
+  resp_filter_func: src/custom_functions/filter_and_execute_python.py 
+
+  # ============ 3. api ============
+  
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+
+    stop: "```output"
+
+
+
+
+8:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess3_3_check_var2_with_python.py
+  resp_filter_func: src/custom_functions/filter_and_execute_python.py
+
+  # ============ 3. api ============
+  
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+
+    stop: "```output"
+
+
+
+9:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess4_1_rename_var1var2.py
+  resp_filter_func: project/NCSP/custom_functions/v4_4step/filter_rename_var1var2.py 
+
+  # ============ 3. api ============
+  
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common  ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+
+
+
+
+10:  # step0
+  mode: "chat" # 'wait' for debug, 'tgi' for tgi completion,  'chat'/'completion' for vllm
+  duplicate_num: 1   
+
+  # ============ 2.preprocess ============
+  preprocess_func: project/NCSP/custom_functions/v4_4step/preprocess4_2_check_same_var.py
+  resp_filter_func: project/NCSP/custom_functions/v4_4step/filter_check_same_var.py 
+
+  # ============ 3. api ============
+  
+  resp_urls:
+    
+    
+    - 'https://api-inference.modelscope.cn/v1'
+  resp_server_names:
+    - 'Qwen/Qwen2.5-72B-Instruct'
+    # - "glm-4"
+  resp_api_keys:
+    - 'YOUR-API-KEY'
+    # - 'YOUR-API-KEY'
+
+  # resp_urls:
+  #   
+  #   # 
+  # resp_server_names:
+  #   - "glm-4"
+  #   - "glm-4"
+  # resp_api_keys:
+  #   - 'YOUR-API-KEY'
+  #   - 'YOUR-API-KEY'
+
+  api_timeout: 360
+
+  # ============ common ============
+  max_try_per_dataset: 2
+  max_try_per_request: 2
+  process_num: 8 #  = process_num * coroutine_per_process
+  coroutine_per_process: 16
+  uniq_key: "__id__"
+
+  # ============ generate config ============
+  generate_config:
+    seed: 42
+    # best_of: 1 # tgi `best_of` must be > 0 and <= 2. `seed` must not be set when `best_of` > 1'
+    temperature: 0.1
+    top_p: 0.7
+
+    # ------ vllm  ------
+    max_tokens: 4096 
+
+

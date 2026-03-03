@@ -1,0 +1,37 @@
+# Core dependencies
+asyncio-mqtt>=0.13.0
+argparse
+multiprocessing-logging>=0.3.4
+
+# Data processing
+pandas>=1.5.0
+ujson>=5.0.0
+PyYAML>=6.0
+numpy>=1.21.0
+
+# HTTP Clients
+aiohttp>=3.8.0
+httpx>=0.24.0
+
+# LLM API clients
+openai>=1.0.0
+requests>=2.28.0
+transformers>=4.20.0
+tokenizers>=0.13.0
+
+# Mathematical processing
+sympy>=1.11.0
+fractions
+
+# Data handling
+datasets>=2.0.0
+
+# System monitoring
+psutil>=5.9.0
+
+# Progress bars
+tqdm>=4.64.0
+
+
+# Optional: For specific model serving
+# vllm  # For local model serving
