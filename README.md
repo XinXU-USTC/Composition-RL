@@ -33,7 +33,7 @@
 ---
 
 ## 📝 News
-
+- [2025/03/17] We released a new compositional training set, [Polaris-Composition-1323K](https://huggingface.co/datasets/xx18/Polaris-Composition-1323K), constructed from Polaris53K.
 - [2025/03/03] We released our evaluation and data generation codes.
 - [2026/02/12] We released the [paper](https://arxiv.org/abs/2602.12036) and [datasets & models](https://huggingface.co/collections/xx18/composition-rl)!
 
@@ -135,6 +135,7 @@ We are open-sourcing our complete code and training details for the research com
 | Composition-RL-4B-Depth1_2 | [Composition-RL-4B-Depth1_2](https://huggingface.co/xx18/Composition-RL-4B-Depth1_2) | Initial Model: Baseline-4B-MATH12K; Training set: MATH-Composition-199K; Results in Table 1 |
 | Composition-RL-4B-Depth1_2_3 | [Composition-RL-4B-Depth1_2_3](https://huggingface.co/xx18/Composition-RL-4B-Depth1_2_3) | Initial Model: Composition-RL-4B-Depth1_2; Training set: MATH-Composition-Depth3; Results in Table 1 |
 | Composition-RL-4B-Physics_Math | [Composition-RL-4B-Physics_Math](https://huggingface.co/xx18/Composition-RL-4B-Physics_Math) | Initial Model: Qwen3-4b-Base; Training set: Physics-MATH-Composition-141K; Results in Table 2 |
+| Polaris-Composition-1323K | [Polaris-Composition-1323K](https://huggingface.co/datasets/xx18/Polaris-Composition-1323K) | Compositional prompts constructed from Polaris53K |
 
 
 
