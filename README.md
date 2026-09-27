@@ -33,8 +33,9 @@
 ---
 
 ## 📝 News
-- [2025/03/17] We released a new compositional training set, [Polaris-Composition-1323K](https://huggingface.co/datasets/xx18/Polaris-Composition-1323K), constructed from Polaris53K.
-- [2025/03/03] We released our evaluation and data generation codes.
+- [2026/09/24] Our Paper is accepted to NeurIPS 2026!
+- [2026/03/17] We released a new compositional training set, [Polaris-Composition-1323K](https://huggingface.co/datasets/xx18/Polaris-Composition-1323K), constructed from Polaris53K.
+- [2026/03/03] We released our evaluation and data generation codes.
 - [2026/02/12] We released the [paper](https://arxiv.org/abs/2602.12036) and [datasets & models](https://huggingface.co/collections/xx18/composition-rl)!
 
 ## 🧠 Overview
